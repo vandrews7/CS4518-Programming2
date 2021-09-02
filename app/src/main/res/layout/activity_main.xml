@@ -93,9 +93,10 @@
     <View
         android:id="@+id/divider"
         android:layout_width="1dp"
-        android:layout_height="729dp"
+        android:layout_height="220dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="270dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

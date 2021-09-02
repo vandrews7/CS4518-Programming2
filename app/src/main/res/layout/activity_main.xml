@@ -95,8 +95,9 @@
         android:layout_width="1dp"
         android:layout_height="220dp"
         android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/rightFTBut"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="270dp" />
+        app:layout_constraintTop_toTopOf="@+id/right3pointBut" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

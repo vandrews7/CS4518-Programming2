@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/right3pointbut"
+        android:id="@+id/right3pointBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+3 points"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.408" />
 
     <Button
-        android:id="@+id/right2pointbut"
+        android:id="@+id/right2pointBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+2 points"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.53" />
 
     <Button
-        android:id="@+id/left3pointbut"
+        android:id="@+id/left3pointBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+3 points"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.408" />
 
     <Button
-        android:id="@+id/left2pointbut"
+        android:id="@+id/left2pointBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+2 points"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.53" />
 
     <Button
-        android:id="@+id/leftFTbut"
+        android:id="@+id/leftFTBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="free throw"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.647" />
 
     <Button
-        android:id="@+id/rightFTbut"
+        android:id="@+id/rightFTBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="free throw"
@@ -89,5 +89,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.742" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="729dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

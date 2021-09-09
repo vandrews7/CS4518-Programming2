@@ -11,17 +11,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val left3btn = findViewById<Button>(R.id.left3pointBut)
-        val left2btn = findViewById<Button>(R.id.left2pointBut)
-        val leftFTbtn = findViewById<Button>(R.id.leftFTBut)
+        val left3btn = findViewById<Button>(R.id.Apoints3)
+        val left2btn = findViewById<Button>(R.id.Apoints2)
+        val leftFTbtn = findViewById<Button>(R.id.Afree)
         var scoreA = 0
-        val txtScoreA = findViewById<TextView>(R.id.textScoreA)
-        val right3btn = findViewById<Button>(R.id.right3pointBut)
-        val right2btn = findViewById<Button>(R.id.right2pointBut)
-        val rightFTbtn = findViewById<Button>(R.id.rightFTBut)
+        val txtScoreA = findViewById<TextView>(R.id.scoreA)
+        val right3btn = findViewById<Button>(R.id.Bpoints3)
+        val right2btn = findViewById<Button>(R.id.Bpoints2)
+        val rightFTbtn = findViewById<Button>(R.id.Bfree)
         var scoreB = 0
-        val txtScoreB = findViewById<TextView>(R.id.textScoreB)
-        val resetBtn = findViewById<Button>(R.id.resetBut)
+        val txtScoreB = findViewById<TextView>(R.id.scoreB)
+        val resetBtn = findViewById<Button>(R.id.reset)
 
         // handle the button clicks
         resetBtn.setOnClickListener {

@@ -6,145 +6,200 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/right3pointBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+3 points"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
-
-    <Button
-        android:id="@+id/right2pointBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+2 points"
-        app:layout_constraintBottom_toTopOf="@+id/rightFTBut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/right3pointBut"
-        app:layout_constraintVertical_bias="0.484" />
-
-    <Button
-        android:id="@+id/left3pointBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+3 points"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
-
-    <Button
-        android:id="@+id/left2pointBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+2 points"
-        app:layout_constraintBottom_toTopOf="@+id/leftFTBut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/left3pointBut" />
-
-    <Button
-        android:id="@+id/leftFTBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="free throw"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/left3pointBut"
-        app:layout_constraintVertical_bias="0.32" />
-
-    <Button
-        android:id="@+id/rightFTBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="free throw"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/right3pointBut"
-        app:layout_constraintVertical_bias="0.32" />
-
-    <Button
-        android:id="@+id/resetBut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="reset"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.18" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="1dp"
-        android:layout_height="350dp"
-        android:background="?android:attr/listDivider"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="362dp"
+        android:layout_height="304dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="245dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/labelA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team A"
-        app:layout_constraintBottom_toTopOf="@+id/left3pointBut"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.496"
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="181dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/teamA"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/teamA"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:text="Team A"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/scoreA"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="181dp"
+            android:layout_marginEnd="182dp"
+            android:layout_marginBottom="359dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/teamB"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:text="Team B"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/teamA"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/scoreB"
+            android:layout_width="180dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="169dp"
+            android:textColor="#070707"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/scoreA"
+            app:layout_constraintTop_toBottomOf="@+id/teamB" />
+
+        <Button
+            android:id="@+id/Apoints3"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="197dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="+3 Points"
+            android:textColor="#070707"
+            app:layout_constraintBottom_toTopOf="@+id/Apoints2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+
+        <Button
+            android:id="@+id/Apoints2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="198dp"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="#070707"
+            android:text="+2 Points"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+
+        <Button
+            android:id="@+id/Afree"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginEnd="196dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="#070707"
+            android:text="Free throw"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+
+        <TextView
+            android:id="@+id/scoreA"
+            android:layout_width="180dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="169dp"
+            android:textColor="#070707"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamA" />
+
+        <Button
+            android:id="@+id/Bpoints3"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="196dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="#070707"
+            android:text="+3 Points"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamB" />
+
+        <Button
+            android:id="@+id/Bpoints2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="196dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="#070707"
+            android:text="+2 Points"
+            app:layout_constraintBottom_toTopOf="@+id/Bfree"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Bpoints3" />
+
+        <Button
+            android:id="@+id/Bfree"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="196dp"
+            android:layout_marginTop="199dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="#070707"
+            android:text="Free throw"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamB" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="158dp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:textColor="#070707"
+        android:text="Reset"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-    <TextView
-        android:id="@+id/labelB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team B"
-        app:layout_constraintBottom_toTopOf="@+id/right3pointBut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53" />
-
-    <TextView
-        android:id="@+id/textScoreA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/left3pointBut"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelA" />
-
-    <TextView
-        android:id="@+id/textScoreB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/right3pointBut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/labelB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

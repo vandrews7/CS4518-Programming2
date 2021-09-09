@@ -218,9 +218,11 @@
         android:layout_height="60dp"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="17dp"
+        android:layout_marginBottom="58dp"
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         var scoreB = 0
         val txtScoreB = findViewById<TextView>(R.id.scoreB)
         val resetBtn = findViewById<Button>(R.id.reset)
+        val winner = findViewById<Button>(R.id.winner)
+        val winTxt = findViewById<TextView>(R.id.winnerDisp)
+        var score = 0
 
         // handle the button clicks
         resetBtn.setOnClickListener {
@@ -53,6 +56,15 @@ class MainActivity : AppCompatActivity() {
         rightFTbtn.setOnClickListener {
             scoreB += 1
             txtScoreB.text = scoreB.toString()
+        }
+
+        winner.setOnClickListener {
+            score = scoreA - scoreB
+            when{
+                score<0 -> winTxt.text = "Team B wins!"
+                score>0 ->winTxt.text = "Team A wins!"
+                else -> winTxt.text = "It's a tie!"
+            }
         }
 
     }

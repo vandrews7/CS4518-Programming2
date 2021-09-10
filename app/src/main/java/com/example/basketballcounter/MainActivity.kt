@@ -3,10 +3,8 @@ package com.example.basketballcounter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity"
@@ -34,7 +32,8 @@ class MainActivity : AppCompatActivity() {
         val winner = findViewById<Button>(R.id.winner)
         val winTxt = findViewById<TextView>(R.id.winnerDisp)
 
-        if(!this.isFinishing) {
+        if(!this.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
+            Log.i(TAG, "Persisting score across screen rotation")
             txtScoreA.text = scoreViewModel.getScoreA().toString()
             txtScoreB.text = scoreViewModel.getScoreB().toString()
         }
@@ -74,12 +73,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "called onDestroy()")
+        Log.i(TAG, "called onDestroy()")
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         savedInstanceState.putInt("scoreA", scoreViewModel.getScoreA())
         savedInstanceState.putInt("scoreB", scoreViewModel.getScoreB())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState.getInt("scoreA")
+        savedInstanceState.getInt("scoreB")
     }
 }

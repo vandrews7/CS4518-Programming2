@@ -8,12 +8,12 @@ private const val TAG = "ScoreViewModel"
 
 class ScoreViewModel : ViewModel(){
     init {
-        Log.d(TAG, "ViewModel instance created")
+        Log.i(TAG, "ViewModel instance created")
     }
 
     override fun onCleared() {
         super.onCleared()
-        Log.d(TAG, "ViewModel instance is about to be destroyed")
+        Log.i(TAG, "ViewModel instance is about to be destroyed")
     }
 
     private var scoreA = 0

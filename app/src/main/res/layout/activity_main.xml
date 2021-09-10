@@ -34,7 +34,7 @@
             android:id="@+id/teamA"
             android:layout_width="179dp"
             android:layout_height="45dp"
-            android:text="Team A"
+            android:text="@string/team_a"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/scoreA"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -61,7 +61,7 @@
             android:id="@+id/teamB"
             android:layout_width="180dp"
             android:layout_height="45dp"
-            android:text="Team B"
+            android:text="@string/team_b"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -91,7 +91,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="197dp"
             android:backgroundTint="@android:color/darker_gray"
-            android:text="+3 Points"
+            android:text="@string/three"
             android:textColor="#070707"
             app:layout_constraintBottom_toTopOf="@+id/Apoints2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +109,7 @@
             android:layout_marginBottom="50dp"
             android:backgroundTint="@android:color/darker_gray"
             android:textColor="#070707"
-            android:text="+2 Points"
+            android:text="@string/two"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -125,7 +125,7 @@
             android:layout_marginEnd="196dp"
             android:backgroundTint="@android:color/darker_gray"
             android:textColor="#070707"
-            android:text="Free throw"
+            android:text="@string/free_throw"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +154,7 @@
             android:layout_marginEnd="16dp"
             android:backgroundTint="@android:color/darker_gray"
             android:textColor="#070707"
-            android:text="+3 Points"
+            android:text="@string/three"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/teamB" />
@@ -167,7 +167,7 @@
             android:layout_marginEnd="16dp"
             android:backgroundTint="@android:color/darker_gray"
             android:textColor="#070707"
-            android:text="+2 Points"
+            android:text="@string/two"
             app:layout_constraintBottom_toTopOf="@+id/Bfree"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +182,7 @@
             android:layout_marginEnd="16dp"
             android:backgroundTint="@android:color/darker_gray"
             android:textColor="#070707"
-            android:text="Free throw"
+            android:text="@string/free_throw"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +197,7 @@
         android:layout_marginStart="158dp"
         android:backgroundTint="@android:color/darker_gray"
         android:textColor="#070707"
-        android:text="Reset"
+        android:text="@string/reset"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -208,7 +208,7 @@
         android:layout_marginStart="158dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#4CAF50"
-        android:text="Winner"
+        android:text="@string/winner"
         android:textColor="#0B0A0A"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset" />
@@ -226,6 +226,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

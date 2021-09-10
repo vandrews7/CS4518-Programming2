@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(ScoreViewModel::class.java)
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, "called onCreate")
         super.onCreate(savedInstanceState)

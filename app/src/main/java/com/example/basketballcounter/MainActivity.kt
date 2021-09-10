@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             txtScoreB.text = scoreViewModel.getScoreB().toString()
             if(scoreViewModel.getWinPressed() > 0) {
                 print(scoreViewModel.getWinPressed())
-                Log.d(TAG, "Win Pressed")
                 winTxt.text = scoreViewModel.getScore()
             }
         }
@@ -71,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             txtScoreB.text = scoreViewModel.addScoreB(1)
         }
         winner.setOnClickListener {
-            Log.d(TAG, "HERE")
             winTxt.text = scoreViewModel.getScore()
         }
     }

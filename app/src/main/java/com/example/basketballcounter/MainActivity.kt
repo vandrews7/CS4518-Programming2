@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         resetBtn.setOnClickListener {
             txtScoreA.text = scoreViewModel.resetScoreA()
             txtScoreB.text = scoreViewModel.resetScoreB()
+            winTxt.text = ""
         }
         left3btn.setOnClickListener {
             txtScoreA.text = scoreViewModel.addScoreA(3)

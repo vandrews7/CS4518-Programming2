@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(ScoreViewModel::class.java)
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, "called onCreate")
         super.onCreate(savedInstanceState)
@@ -36,12 +38,18 @@ class MainActivity : AppCompatActivity() {
             Log.i(TAG, "Persisting score across screen rotation")
             txtScoreA.text = scoreViewModel.getScoreA().toString()
             txtScoreB.text = scoreViewModel.getScoreB().toString()
+            if(scoreViewModel.getWinPressed() > 0) {
+                print(scoreViewModel.getWinPressed())
+                Log.d(TAG, "Win Pressed")
+                winTxt.text = scoreViewModel.getScore()
+            }
         }
 
         // handle the button clicks
         resetBtn.setOnClickListener {
             txtScoreA.text = scoreViewModel.resetScoreA()
             txtScoreB.text = scoreViewModel.resetScoreB()
+            scoreViewModel.resetWinPressed()
             winTxt.text = ""
         }
         left3btn.setOnClickListener {
@@ -63,12 +71,8 @@ class MainActivity : AppCompatActivity() {
             txtScoreB.text = scoreViewModel.addScoreB(1)
         }
         winner.setOnClickListener {
-            val score = scoreViewModel.getScoreA() - scoreViewModel.getScoreB()
-            when{
-                score < 0 -> winTxt.text = "Team B wins!"
-                score > 0 -> winTxt.text = "Team A wins!"
-                else -> winTxt.text = "It's a tie!"
-            }
+            Log.d(TAG, "HERE")
+            winTxt.text = scoreViewModel.getScore()
         }
     }
 

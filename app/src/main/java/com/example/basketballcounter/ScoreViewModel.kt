@@ -18,6 +18,7 @@ class ScoreViewModel : ViewModel(){
 
     private var scoreA = 0
     private var scoreB = 0
+    private var winPressed = 0
 
     fun resetScoreA(): String {
         scoreA = 0
@@ -32,6 +33,21 @@ class ScoreViewModel : ViewModel(){
     }
     fun getScoreB(): Int {
         return scoreB
+    }
+    fun getScore(): String {
+        winPressed += 1
+        when{
+            scoreA - scoreB < 0 -> return "Team B wins!"
+            scoreA - scoreB > 0 -> return "Team A wins!"
+            scoreA - scoreB == 0 -> return "It's a tie!"
+            else -> return ""
+        }
+    }
+    fun getWinPressed(): Int {
+        return winPressed
+    }
+    fun resetWinPressed() {
+        winPressed = 0
     }
     fun addScoreA(value: Int): String{
         scoreA += value

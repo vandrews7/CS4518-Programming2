@@ -1,5 +1,6 @@
 package com.example.basketballcounter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -74,7 +75,9 @@ class MainActivity : AppCompatActivity() {
             winTxt.text = scoreViewModel.getScore()
         }
         saveBtn.setOnClickListener {
-            //TODO: trigger save activity from here i think?
+            val intent = Intent(this, SaveActivity::class.java)
+            startActivity(intent)
+
             Toast.makeText(
                 this,
                 R.string.save_toast,

@@ -1,5 +1,6 @@
 package com.example.basketballcounter
 
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,8 @@ class SaveActivity : AppCompatActivity() {
         coolButton.setOnClickListener {
             coolText.visibility = View.VISIBLE
             coolButton.isClickable = false
+            //TODO: figure out how to change the color of the button after it gets clicked (the comment below might be helpful but like maybe not idk)
+//            coolButton.backgroundTintList = ColorStateList.valueOf()
         }
     }
 }

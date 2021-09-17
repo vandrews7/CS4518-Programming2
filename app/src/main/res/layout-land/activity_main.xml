@@ -7,6 +7,57 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="319dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531">
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/save_button"
+            android:textColor="#070707"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/reset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/displayBtn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="13dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/display_button"
+            android:textColor="#070707"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/saveBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="@string/reset"
+            android:textColor="#070707"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/saveBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="362dp"
         android:layout_height="304dp"
@@ -189,18 +240,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/reset"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@android:color/darker_gray"
-        android:text="Reset"
-        android:textColor="#070707"
-        app:layout_constraintBottom_toTopOf="@+id/winner"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
         android:id="@+id/winner"
         android:layout_width="100dp"
         android:layout_height="60dp"
@@ -216,13 +255,11 @@
         android:id="@+id/winnerDisp"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="58dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="20dp"
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

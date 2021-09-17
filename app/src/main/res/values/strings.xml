@@ -9,6 +9,6 @@
     <string name="reset">Reset</string>
     <string name="save_button">Save</string>
     <string name="display_button">Display</string>
-    <string name="saved_toast">Game saved!</string>
+    <string name="save_toast">Game saved!</string>
     <string name="cool_text">Game info saved!</string>
 </resources>

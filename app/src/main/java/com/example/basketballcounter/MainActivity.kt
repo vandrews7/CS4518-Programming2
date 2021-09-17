@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity"
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val resetBtn = findViewById<Button>(R.id.reset)
         val winner = findViewById<Button>(R.id.winner)
         val winTxt = findViewById<TextView>(R.id.winnerDisp)
+        val saveBtn = findViewById<Button>(R.id.saveBtn)
+        val displayBtn = findViewById<Button>(R.id.displayBtn)
 
         if(!this.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
             Log.i(TAG, "Persisting score across screen rotation")
@@ -69,6 +72,14 @@ class MainActivity : AppCompatActivity() {
         }
         winner.setOnClickListener {
             winTxt.text = scoreViewModel.getScore()
+        }
+        saveBtn.setOnClickListener {
+            //TODO: trigger save activity from here i think?
+            Toast.makeText(
+                this,
+                R.string.save_toast,
+                Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

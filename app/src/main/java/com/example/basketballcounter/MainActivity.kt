@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity"
+private const val REQUEST_CODE = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,8 +76,8 @@ class MainActivity : AppCompatActivity() {
             winTxt.text = scoreViewModel.getScore()
         }
         saveBtn.setOnClickListener {
-            val intent = Intent(this, SaveActivity::class.java)
-            startActivity(intent)
+            val intent = SaveActivity.newIntent(this@MainActivity, scoreViewModel.getScoreA(), scoreViewModel.getScoreB())
+            startActivityForResult(intent, REQUEST_CODE)
 
             Toast.makeText(
                 this,

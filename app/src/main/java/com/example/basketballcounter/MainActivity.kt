@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i(TAG, "called onCreate")
+        Log.i(TAG, "called onCreate()")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             winTxt.text = scoreViewModel.getScore()
         }
         saveBtn.setOnClickListener {
+            Log.i(TAG, "save button clicked, switching to SaveActivity")
             val intent = SaveActivity.newIntent(this@MainActivity, scoreViewModel.getScoreA(), scoreViewModel.getScoreB())
             startActivityForResult(intent, REQUEST_CODE)
 

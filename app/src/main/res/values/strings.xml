@@ -11,4 +11,6 @@
     <string name="display_button">Display</string>
     <string name="save_toast">Game saved!</string>
     <string name="cool_text">Game info saved!</string>
+    <string name="teamA_hint">Input team A name</string>
+    <string name="teamB_hint">Input team B name</string>
 </resources>

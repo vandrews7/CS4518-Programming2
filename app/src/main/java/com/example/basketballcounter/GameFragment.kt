@@ -131,7 +131,7 @@ class GameFragment: Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val teamAwatcher = object: TextWatcher{
+        val teamAWatcher = object: TextWatcher{
             override fun beforeTextChanged(sequence: CharSequence?,
                                            start: Int,
                                            count: Int,
@@ -149,13 +149,13 @@ class GameFragment: Fragment() {
                 game.teamAname = sequence.toString()
             }
 
-            override fun afterTextChanged(p0: Editable?) {
+            override fun afterTextChanged(sequence: Editable?) {
                 TODO("Not yet implemented")
             }
         }
-        teamAname.addTextChangedListener(teamAwatcher)
+        teamAname.addTextChangedListener(teamAWatcher)
 
-        val teamBwatcher = object: TextWatcher{
+        val teamBWatcher = object: TextWatcher{
             override fun beforeTextChanged(sequence: CharSequence?,
                                            start: Int,
                                            count: Int,
@@ -173,11 +173,11 @@ class GameFragment: Fragment() {
                 game.teamBname = sequence.toString()
             }
 
-            override fun afterTextChanged(p0: Editable?) {
+            override fun afterTextChanged(sequence: Editable?) {
                 TODO("Not yet implemented")
             }
         }
-        teamBname.addTextChangedListener(teamBwatcher)
+        teamBname.addTextChangedListener(teamBWatcher)
     }
 
 

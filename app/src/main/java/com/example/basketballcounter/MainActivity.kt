@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         if(currentFragment == null){
             val fragment = GameFragment()
-            supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit()
         }
     }
 

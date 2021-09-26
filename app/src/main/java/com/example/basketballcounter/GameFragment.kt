@@ -2,14 +2,19 @@ package com.example.basketballcounter
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+
+private const val TAG = "GameFragment"
+private const val REQUEST_CODE = 0
 
 class GameFragment: Fragment() {
 
@@ -63,16 +68,26 @@ class GameFragment: Fragment() {
         display = view.findViewById(R.id.displayBtn) as Button
         winnerBtn = view.findViewById(R.id.winner) as Button
 
+        if(!activity!!.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
+            Log.i(TAG, "Persisting score across screen rotation")
+            teamAscore.text = scoreViewModel.getScoreA().toString()
+            teamBscore.text = scoreViewModel.getScoreB().toString()
+            if(scoreViewModel.getWinPressed() > 0) {
+                print(scoreViewModel.getWinPressed())
+                winnerTxt.text = scoreViewModel.getScore()
+            }
+        }
+
         Abtn3.setOnClickListener {
             teamAscore.text = scoreViewModel.addScoreA(3)
         }
 
         Abtn2.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreA(2)
+            teamAscore.text = scoreViewModel.addScoreA(2)
         }
 
         AbtnFree.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreA(1)
+            teamAscore.text = scoreViewModel.addScoreA(1)
         }
 
         Bbtn3.setOnClickListener {
@@ -87,11 +102,27 @@ class GameFragment: Fragment() {
             teamBscore.text = scoreViewModel.addScoreB(1)
         }
 
+        winnerBtn.setOnClickListener {
+            winnerTxt.text = scoreViewModel.getScore()
+        }
+
         resetBtn.setOnClickListener {
             teamAscore.text = scoreViewModel.resetScoreA()
             teamBscore.text = scoreViewModel.resetScoreB()
             scoreViewModel.resetWinPressed()
             winnerTxt.text = ""
+        }
+
+        save.setOnClickListener {
+            Log.i(TAG, "save button clicked, switching to SaveActivity")
+            val intent = SaveActivity.newIntent(activity!!, scoreViewModel.getScoreA(), scoreViewModel.getScoreB())
+            startActivityForResult(intent, REQUEST_CODE)
+
+            Toast.makeText(
+                activity!!,
+                R.string.save_toast,
+                Toast.LENGTH_SHORT)
+                .show()
         }
 
         return view

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
@@ -37,6 +38,14 @@ class GameListFragment : Fragment() {
         gameRecyclerView.layoutManager = LinearLayoutManager(context)
 
         return view
+    }
+
+    private inner class GameHolder(view: View) : RecyclerView.ViewHolder(view){
+        val teamAname: TextView = itemView.findViewById(R.id.savedTeamA)
+        val teamBname: TextView = itemView.findViewById(R.id.savedTeamB)
+        val teamAscore: TextView = itemView.findViewById(R.id.savedScoreA)
+        val teamBscore: TextView = itemView.findViewById(R.id.savedScoreB)
+        val gameDate: TextView = itemView.findViewById(R.id.gameDate)
     }
 
     companion object {

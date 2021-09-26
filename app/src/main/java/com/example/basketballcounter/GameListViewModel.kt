@@ -10,8 +10,8 @@ class GameListViewModel : ViewModel() {
         for(i in 0 until 100) {
             val game = Game()
             game.index = "Game #$i"
-            game.scoreA = 0
-            game.scoreB = 0
+            game.scoreA = (0..100).random()
+            game.scoreB = (0..100).random()
             game.teamAname = "TeamA"
             game.teamBname = "TeamB"
             game.date = Date()

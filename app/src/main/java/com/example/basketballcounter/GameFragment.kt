@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "GameFragment"
-private const val REQUEST_CODE = 0
+const val REQUEST_CODE = 0
 
 class GameFragment: Fragment() {
 

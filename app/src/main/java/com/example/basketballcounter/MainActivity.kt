@@ -1,8 +1,12 @@
 package com.example.basketballcounter
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity"
@@ -24,12 +28,39 @@ class MainActivity : AppCompatActivity() {
             val fragment = GameFragment()
             supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
         }
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.i(TAG, "called onDestroy()")
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.i(TAG, "called onActivityResult()")
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.d(TAG, "resultCode = $resultCode")
+        if(resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        val isCoolClick = data?.getBooleanExtra(EXTRA_COOL_CLICK, false)
+        Log.d(TAG, "requestCode = $requestCode")
+        Log.d(TAG, "extra_cool_click = $isCoolClick")
+
+        if(requestCode == REQUEST_CODE) {
+            scoreViewModel.savePressed = isCoolClick ?: false
+        }
+        Log.d(TAG, "savePressed = ${scoreViewModel.savePressed}")
+
+        if(scoreViewModel.savePressed) {
+            Toast.makeText(
+                this,
+                R.string.save_toast,
+                Toast.LENGTH_SHORT
+            )
+                .show()
+        }
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {

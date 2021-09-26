@@ -11,9 +11,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-private const val EXTRA_A_SCORE = "com.example.basketballcounter.team_A_score"
-private const val EXTRA_B_SCORE = "com.example.basketballcounter.team_B_score"
-private const val EXTRA_COOL_CLICK = "com.example.basketballcounter.coolBtn_click"
+const val EXTRA_A_SCORE = "com.example.basketballcounter.team_A_score"
+const val EXTRA_B_SCORE = "com.example.basketballcounter.team_B_score"
+const val EXTRA_COOL_CLICK = "com.example.basketballcounter.coolBtn_click"
 private const val TAG = "SaveActivity"
 
 class SaveActivity : AppCompatActivity() {
@@ -29,6 +29,7 @@ class SaveActivity : AppCompatActivity() {
             setIsClickedResult(true)
             coolText.visibility = View.VISIBLE
             coolButton.isClickable = false
+            //TODO: maybe send this back to main activity if that is possible idk
             //TODO: figure out how to change the color of the button after it gets clicked (the comment below might be helpful but like maybe not idk)
 //            coolButton.backgroundTintList = ColorStateList.valueOf()
         }

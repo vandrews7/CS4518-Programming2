@@ -21,7 +21,7 @@ private const val REQUEST_CODE = 0
 class GameFragment: Fragment() {
 
     private val scoreViewModel: ScoreViewModel by lazy {
-        ViewModelProviders.of(activity!!).get(ScoreViewModel::class.java)
+        ViewModelProviders.of(this).get(ScoreViewModel::class.java)
     }
 
     private lateinit var game: Game

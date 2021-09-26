@@ -19,9 +19,9 @@ class GameRepository private constructor(context: Context){
 
     fun getGames(): List<Game> = gameDao.getGames()
 
-    fun getAWins(): List<Game> = gameDao.getAWins()
-
-    fun getBWins(): List<Game> = gameDao.getBWins()
+//    fun getAWins(): List<Game> = gameDao.getAWins()
+//
+//    fun getBWins(): List<Game> = gameDao.getBWins()
 
     companion object {
         private var INSTANCE: GameRepository? = null

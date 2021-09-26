@@ -13,4 +13,5 @@
     <string name="cool_text">Game info saved!</string>
     <string name="teamA_hint">Input team A name</string>
     <string name="teamB_hint">Input team B name</string>
+    <string name="item_list_format">%1$s:%2$s</string>
 </resources>

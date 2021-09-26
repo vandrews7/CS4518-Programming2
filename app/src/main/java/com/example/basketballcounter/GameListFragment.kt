@@ -41,10 +41,8 @@ class GameListFragment : Fragment() {
     }
 
     private inner class GameHolder(view: View) : RecyclerView.ViewHolder(view){
-        val teamAname: TextView = itemView.findViewById(R.id.savedTeamA)
-        val teamBname: TextView = itemView.findViewById(R.id.savedTeamB)
-        val teamAscore: TextView = itemView.findViewById(R.id.savedScoreA)
-        val teamBscore: TextView = itemView.findViewById(R.id.savedScoreB)
+        val teamNames: TextView = itemView.findViewById(R.id.teamNames)
+        val teamScores: TextView = itemView.findViewById(R.id.teamScores)
         val gameDate: TextView = itemView.findViewById(R.id.gameDate)
     }
 
@@ -59,10 +57,8 @@ class GameListFragment : Fragment() {
         override fun onBindViewHolder(holder: GameHolder, position: Int) {
             val game = games[position]
             holder.apply {
-                teamAname.text = game.teamAname
-                teamBname.text = game.teamBname
-                teamBscore.text = game.scoreB.toString()
-                teamAscore.text = game.scoreA.toString()
+                teamNames.text = getString(R.string.item_list_format, game.teamAname, game.teamBname)
+                teamScores.text = getString(R.string.item_list_format, game.scoreA.toString(), game.scoreB.toString())
                 gameDate.text = game.date.toString()
             }
         }

@@ -6,6 +6,12 @@
     android:padding="8dp">
 
     <TextView
+        android:id="@+id/gameNum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="" />
+
+    <TextView
         android:id="@+id/teamNames"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

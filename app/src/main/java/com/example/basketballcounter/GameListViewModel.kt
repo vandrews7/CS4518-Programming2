@@ -9,10 +9,11 @@ class GameListViewModel : ViewModel() {
     init {
         for(i in 0 until 100) {
             val game = Game()
+            game.index = "Game #$i"
             game.scoreA = 0
             game.scoreB = 0
-            game.teamAname = ""
-            game.teamBname = ""
+            game.teamAname = "TeamA"
+            game.teamBname = "TeamB"
             game.date = Date()
             games += game
         }

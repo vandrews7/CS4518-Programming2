@@ -48,6 +48,26 @@ class GameListFragment : Fragment() {
         val gameDate: TextView = itemView.findViewById(R.id.gameDate)
     }
 
+    private inner class GameAdapter(var games: List<Game>) : RecyclerView.Adapter<GameHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameHolder {
+            val view= layoutInflater.inflate(R.layout.list_item_game, parent, false)
+            return GameHolder(view)
+        }
+
+        override fun getItemCount() = games.size
+
+        override fun onBindViewHolder(holder: GameHolder, position: Int) {
+            val game = games[position]
+            holder.apply {
+                teamAname.text = game.teamAname
+                teamBname.text = game.teamBname
+                teamBscore.text = game.scoreB.toString()
+                teamAscore.text = game.scoreA.toString()
+                gameDate.text = game.date.toString()
+            }
+        }
+    }
+
     companion object {
         fun newInstance(): GameListFragment {
             return GameListFragment()

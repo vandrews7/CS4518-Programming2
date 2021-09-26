@@ -42,13 +42,17 @@ class GameFragment: Fragment() {
     private lateinit var display: Button
     private lateinit var winnerBtn: Button
     private lateinit var winnerTxt: TextView
+//    private lateinit var gameDetailViewModel: GameDetailViewModel by lazy{
+//        ViewModelProviders.of(this).get(GameDetailViewModel::class.java)
+//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
         val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
-        Log.d(TAG, "args bundle game ID: $gameId")
+        //Log.d(TAG, "args bundle game ID: $gameId")
+       // gameDetailViewModel.loadGame(gameId)
     }
 
     override fun onCreateView(

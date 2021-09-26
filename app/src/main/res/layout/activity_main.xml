@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
+        <EditText
             android:id="@+id/teamA"
             android:layout_width="179dp"
             android:layout_height="45dp"
@@ -57,7 +57,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <EditText
             android:id="@+id/teamB"
             android:layout_width="180dp"
             android:layout_height="45dp"

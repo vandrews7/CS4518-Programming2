@@ -139,7 +139,6 @@ class GameFragment: Fragment() {
                                            count: Int,
                                            after: Int
             ) {
-                TODO("Not yet implemented")
             }
 
             override fun onTextChanged(sequence: CharSequence?,
@@ -147,12 +146,10 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                TODO("Not yet implemented")
                 game.teamAname = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
-                TODO("Not yet implemented")
             }
         }
         teamAname.addTextChangedListener(teamAWatcher)

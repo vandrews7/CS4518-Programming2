@@ -7,6 +7,12 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/gameNum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="" />
+
+    <TextView
         android:id="@+id/teamNames"
         android:layout_width="300dp"
         android:layout_height="60dp"

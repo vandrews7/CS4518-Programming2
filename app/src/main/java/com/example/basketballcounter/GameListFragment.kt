@@ -17,6 +17,7 @@ private const val TAG = "GameListFragment"
 class GameListFragment : Fragment() {
 
     private lateinit var gameRecyclerView: RecyclerView
+    private var adapter: GameAdapter? = null
 
     private val gameListViewModel: GameListViewModel by lazy {
         ViewModelProviders.of(this).get(GameListViewModel::class.java)
@@ -37,10 +38,19 @@ class GameListFragment : Fragment() {
         gameRecyclerView = view.findViewById(R.id.game_recycler_view) as RecyclerView
         gameRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        updateUI()
+
         return view
     }
 
+    private fun updateUI() {
+        val games = gameListViewModel.games
+        adapter = GameAdapter(games)
+        gameRecyclerView.adapter = adapter
+    }
+
     private inner class GameHolder(view: View) : RecyclerView.ViewHolder(view){
+        val gameNum: TextView = itemView.findViewById(R.id.gameNum)
         val teamNames: TextView = itemView.findViewById(R.id.teamNames)
         val teamScores: TextView = itemView.findViewById(R.id.teamScores)
         val gameDate: TextView = itemView.findViewById(R.id.gameDate)
@@ -57,6 +67,7 @@ class GameListFragment : Fragment() {
         override fun onBindViewHolder(holder: GameHolder, position: Int) {
             val game = games[position]
             holder.apply {
+                gameNum.text = game.index
                 teamNames.text = getString(R.string.item_list_format, game.teamAname, game.teamBname)
                 teamScores.text = getString(R.string.item_list_format, game.scoreA.toString(), game.scoreB.toString())
                 gameDate.text = game.date.toString()

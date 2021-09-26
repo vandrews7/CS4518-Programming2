@@ -1,4 +1,6 @@
 package com.example.basketballcounter
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,12 +16,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "GameFragment"
-const val REQUEST_CODE = 0
+private const val REQUEST_CODE = 0
 
 class GameFragment: Fragment() {
 
     private val scoreViewModel: ScoreViewModel by lazy {
-        ViewModelProviders.of(this).get(ScoreViewModel::class.java)
+        ViewModelProviders.of(activity!!).get(ScoreViewModel::class.java)
     }
 
     private lateinit var game: Game
@@ -118,11 +120,11 @@ class GameFragment: Fragment() {
             val intent = SaveActivity.newIntent(activity!!, scoreViewModel.getScoreA(), scoreViewModel.getScoreB())
             startActivityForResult(intent, REQUEST_CODE)
 
-            Toast.makeText(
-                activity!!,
-                R.string.save_toast,
-                Toast.LENGTH_SHORT)
-                .show()
+//            Toast.makeText(
+//                activity!!,
+//                R.string.save_toast,
+//                Toast.LENGTH_SHORT)
+//                .show()
         }
 
         return view
@@ -178,6 +180,34 @@ class GameFragment: Fragment() {
             }
         }
         teamBname.addTextChangedListener(teamBwatcher)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.i(TAG, "called onActivityResult()")
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.d(TAG, "resultCode = $resultCode")
+        if(resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        val isCoolClick = data?.getBooleanExtra(EXTRA_COOL_CLICK, false)
+        Log.d(TAG, "requestCode = $requestCode")
+        Log.d(TAG, "extra_cool_click = $isCoolClick")
+
+        if(requestCode == REQUEST_CODE) {
+            scoreViewModel.savePressed = isCoolClick ?: false
+        }
+        Log.d(TAG, "savePressed = ${scoreViewModel.savePressed}")
+
+        if(scoreViewModel.savePressed) {
+            Toast.makeText(
+                activity!!,
+                R.string.save_toast,
+                Toast.LENGTH_SHORT
+            )
+                .show()
+        }
     }
 
 

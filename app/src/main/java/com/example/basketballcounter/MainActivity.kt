@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity"
+private const val REQUEST_CODE = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,34 +34,6 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.i(TAG, "called onDestroy()")
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.i(TAG, "called onActivityResult()")
-        super.onActivityResult(requestCode, resultCode, data)
-
-        Log.d(TAG, "resultCode = $resultCode")
-        if(resultCode != Activity.RESULT_OK) {
-            return
-        }
-
-        val isCoolClick = data?.getBooleanExtra(EXTRA_COOL_CLICK, false)
-        Log.d(TAG, "requestCode = $requestCode")
-        Log.d(TAG, "extra_cool_click = $isCoolClick")
-
-        if(requestCode == REQUEST_CODE) {
-            scoreViewModel.savePressed = isCoolClick ?: false
-        }
-        Log.d(TAG, "savePressed = ${scoreViewModel.savePressed}")
-
-        if(scoreViewModel.savePressed) {
-            Toast.makeText(
-                this,
-                R.string.save_toast,
-                Toast.LENGTH_SHORT
-            )
-                .show()
-        }
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {

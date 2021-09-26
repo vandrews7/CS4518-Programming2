@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -54,6 +55,8 @@ class GameListFragment : Fragment() {
         val teamNames: TextView = itemView.findViewById(R.id.teamNames)
         val teamScores: TextView = itemView.findViewById(R.id.teamScores)
         val gameDate: TextView = itemView.findViewById(R.id.gameDate)
+        val teamAicon: ImageView =  itemView.findViewById(R.id.iconA)
+        val teamBicon: ImageView = itemView.findViewById(R.id.iconB)
     }
 
     private inner class GameAdapter(var games: List<Game>) : RecyclerView.Adapter<GameHolder>() {
@@ -71,6 +74,18 @@ class GameListFragment : Fragment() {
                 teamNames.text = getString(R.string.item_list_format, game.teamAname, game.teamBname)
                 teamScores.text = getString(R.string.item_list_format, game.scoreA.toString(), game.scoreB.toString())
                 gameDate.text = game.date.toString()
+                teamAicon.visibility = if(game.scoreA > game.scoreB){
+                    View.VISIBLE
+                }
+                else{
+                    View.GONE
+                }
+                teamBicon.visibility = if(game.scoreB > game.scoreA){
+                    View.VISIBLE
+                }
+                else {
+                    View.GONE
+                }
             }
         }
     }

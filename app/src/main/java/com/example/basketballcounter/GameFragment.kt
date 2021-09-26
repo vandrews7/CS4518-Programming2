@@ -1,20 +1,27 @@
 package com.example.basketballcounter
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+
+private const val TAG = "GameFragment"
+private const val REQUEST_CODE = 0
 
 class GameFragment: Fragment() {
 
     private val scoreViewModel: ScoreViewModel by lazy {
-        ViewModelProviders.of(this).get(ScoreViewModel::class.java)
+        ViewModelProviders.of(activity!!).get(ScoreViewModel::class.java)
     }
 
     private lateinit var game: Game
@@ -63,16 +70,26 @@ class GameFragment: Fragment() {
         display = view.findViewById(R.id.displayBtn) as Button
         winnerBtn = view.findViewById(R.id.winner) as Button
 
+        if(!activity!!.isFinishing && (scoreViewModel.getScoreA() > 0 || scoreViewModel.getScoreB() > 0)) {
+            Log.i(TAG, "Persisting score across screen rotation")
+            teamAscore.text = scoreViewModel.getScoreA().toString()
+            teamBscore.text = scoreViewModel.getScoreB().toString()
+            if(scoreViewModel.getWinPressed() > 0) {
+                print(scoreViewModel.getWinPressed())
+                winnerTxt.text = scoreViewModel.getScore()
+            }
+        }
+
         Abtn3.setOnClickListener {
             teamAscore.text = scoreViewModel.addScoreA(3)
         }
 
         Abtn2.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreA(2)
+            teamAscore.text = scoreViewModel.addScoreA(2)
         }
 
         AbtnFree.setOnClickListener {
-            teamBscore.text = scoreViewModel.addScoreA(1)
+            teamAscore.text = scoreViewModel.addScoreA(1)
         }
 
         Bbtn3.setOnClickListener {
@@ -87,11 +104,27 @@ class GameFragment: Fragment() {
             teamBscore.text = scoreViewModel.addScoreB(1)
         }
 
+        winnerBtn.setOnClickListener {
+            winnerTxt.text = scoreViewModel.getScore()
+        }
+
         resetBtn.setOnClickListener {
             teamAscore.text = scoreViewModel.resetScoreA()
             teamBscore.text = scoreViewModel.resetScoreB()
             scoreViewModel.resetWinPressed()
             winnerTxt.text = ""
+        }
+
+        save.setOnClickListener {
+            Log.i(TAG, "save button clicked, switching to SaveActivity")
+            val intent = SaveActivity.newIntent(activity!!, scoreViewModel.getScoreA(), scoreViewModel.getScoreB())
+            startActivityForResult(intent, REQUEST_CODE)
+
+//            Toast.makeText(
+//                activity!!,
+//                R.string.save_toast,
+//                Toast.LENGTH_SHORT)
+//                .show()
         }
 
         return view
@@ -100,13 +133,12 @@ class GameFragment: Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val teamAwatcher = object: TextWatcher{
+        val teamAWatcher = object: TextWatcher{
             override fun beforeTextChanged(sequence: CharSequence?,
                                            start: Int,
                                            count: Int,
                                            after: Int
             ) {
-                TODO("Not yet implemented")
             }
 
             override fun onTextChanged(sequence: CharSequence?,
@@ -114,23 +146,20 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                TODO("Not yet implemented")
                 game.teamAname = sequence.toString()
             }
 
-            override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
+            override fun afterTextChanged(sequence: Editable?) {
             }
         }
-        teamAname.addTextChangedListener(teamAwatcher)
+        teamAname.addTextChangedListener(teamAWatcher)
 
-        val teamBwatcher = object: TextWatcher{
+        val teamBWatcher = object: TextWatcher{
             override fun beforeTextChanged(sequence: CharSequence?,
                                            start: Int,
                                            count: Int,
                                            after: Int
             ) {
-                TODO("Not yet implemented")
             }
 
             override fun onTextChanged(sequence: CharSequence?,
@@ -138,15 +167,41 @@ class GameFragment: Fragment() {
                                        count: Int,
                                        after: Int
             ) {
-                TODO("Not yet implemented")
                 game.teamBname = sequence.toString()
             }
 
-            override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
+            override fun afterTextChanged(sequence: Editable?) {
             }
         }
-        teamBname.addTextChangedListener(teamBwatcher)
+        teamBname.addTextChangedListener(teamBWatcher)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.i(TAG, "called onActivityResult()")
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.d(TAG, "resultCode = $resultCode")
+        if(resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        val isCoolClick = data?.getBooleanExtra(EXTRA_COOL_CLICK, false)
+        Log.d(TAG, "requestCode = $requestCode")
+        Log.d(TAG, "extra_cool_click = $isCoolClick")
+
+        if(requestCode == REQUEST_CODE) {
+            scoreViewModel.savePressed = isCoolClick ?: false
+        }
+        Log.d(TAG, "savePressed = ${scoreViewModel.savePressed}")
+
+        if(scoreViewModel.savePressed) {
+            Toast.makeText(
+                activity!!,
+                R.string.save_toast,
+                Toast.LENGTH_SHORT
+            )
+                .show()
+        }
     }
 
 

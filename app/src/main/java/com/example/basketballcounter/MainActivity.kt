@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
 
         if(currentFragment == null){
-            val fragment = GameFragment()
+            val fragment = GameListFragment.newInstance()
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container, fragment)
@@ -38,8 +38,12 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks {
 
     override fun onGameSelected(id: UUID) {
      //   Log.d(TAG, "MainActivity.onGameSelected: $id")
-        val fragment = GameFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+        val fragment = GameFragment.newInstance(id)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroy() {

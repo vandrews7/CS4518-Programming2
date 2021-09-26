@@ -14,9 +14,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import java.util.*
 
 private const val TAG = "GameFragment"
 private const val REQUEST_CODE = 0
+private const val ARG_GAME_ID = "game_id"
 
 class GameFragment: Fragment() {
 
@@ -45,6 +47,8 @@ class GameFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         game = Game()
+        val gameId: UUID = arguments?.getSerializable(ARG_GAME_ID) as UUID
+        Log.d(TAG, "args bundle game ID: $gameId")
     }
 
     override fun onCreateView(
@@ -174,6 +178,17 @@ class GameFragment: Fragment() {
             }
         }
         teamBname.addTextChangedListener(teamBWatcher)
+    }
+
+    companion object{
+        fun newInstance(id: UUID): GameFragment{
+            val args = Bundle().apply{
+                putSerializable(ARG_GAME_ID, id)
+            }
+            return GameFragment().apply{
+                arguments = args
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

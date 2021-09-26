@@ -19,6 +19,7 @@ class ScoreViewModel : ViewModel(){
     private var scoreA = 0
     private var scoreB = 0
     private var winPressed = 0
+    var savePressed = false
 
     fun resetScoreA(): String {
         scoreA = 0

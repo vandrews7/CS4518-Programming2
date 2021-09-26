@@ -5,12 +5,12 @@ import com.example.basketballcounter.Game
 @Dao
 interface GameDao {
 
-    @Query("SELECT * from game")
+    @Query("SELECT * FROM game")
     fun getGames(): List<Game>
 
-    @Query("SELECT * from game where scoreA > scoreB")
+    @Query("SELECT * FROM game WHERE scoreA > scoreB")
     fun getAWins(): List<Game>
 
-    @Query("SELECT * from game where scoreB > scoreA")
+    @Query("SELECT * FROM game WHERE scoreB > scoreA")
     fun getBWins(): List<Game>
 }

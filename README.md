@@ -1,7 +1,7 @@
 # CS4518-Programming2
 # Veronica Andrews and Maranda Allen
 
-Each part of the project has a separate branch on our public git repo, for ease of giving partial credit: https://github.com/vandrews7/CS4518-Programming2 (also linked in the writeup)
+Each part of the project has a separate branch on our public git repo, for ease of giving credit/partial credit and seeing the separate parts of the assignment: https://github.com/vandrews7/CS4518-Programming2 (also linked in the writeup)
 The master branch of the repo, which is what was submitted as the debug APK, includes all of our working features.
 
 Part 1:

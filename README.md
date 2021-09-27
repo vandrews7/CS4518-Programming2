@@ -20,4 +20,7 @@ Part 5: (not merged into master)
 In part 5 we encountered problems with the gradle build when using kapt. The specific error we got was regarding "Task :app:kaptDebugKotlin". We communicated with Professor Guo, but we're unable to solve this problem. Because of this, on branch feature/Part5 the app either crashes or fails to build.
 Most of the code that would be required for part 5 is implemented, but untested because we were never able to get it to work. If there is an opportunity for partial credit, part 5 can be assessed through inspection of the code on GitHub in branch feature/Part5.
 
-Part 6:
+Part 6: (most of it not merged into master)
+We encountered problems implementing part 6 because we were unable to get the database to work, so the integration was not possible. We made progress on part 6, so the itemViews in the recyclerView can be clicked. If there is an opportunity for partial credit, part 6 can be assessed through the code in GitHub on the branch feature/Part6.
+
+The idea of not merging the broken code into master, but including it in the branches was because we wanted to submit a working model of our app, while also including the code to be assessed.

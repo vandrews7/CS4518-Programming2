@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        //TODO: fix this so it does something lmao
         super.onRestoreInstanceState(savedInstanceState)
         savedInstanceState.getInt("scoreA")
         savedInstanceState.getInt("scoreB")

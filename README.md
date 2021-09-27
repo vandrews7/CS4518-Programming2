@@ -14,7 +14,7 @@ Part 3:
 Part 3 can be assessed through the writeup and through inspection of the code. Notice that the Recycler View is called in MainActivity. There should be no problems.
 
 Part 4:
-Part 4 can be assess through inspection of the xml file res/layout/list_item_game.xml. There should be no problems.1
+Part 4 can be assess through inspection of the xml file res/layout/list_item_game.xml. There should be no problems.
 
 Part 5:
 In part 5 we encountered problems with the gradle build when using kapt. The specific error we got was regarding "Task :app:kaptDebugKotlin". We communicated with Professor Guo, but we're unable to solve this problem. Because of this, on branch feature/Part5 the app either crashes or fails to build.

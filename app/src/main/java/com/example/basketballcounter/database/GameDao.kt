@@ -1,8 +1,12 @@
 package com.example.basketballcounter.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.basketballcounter.Game
+import java.util.*
 
 @Dao
 interface GameDao {
@@ -10,9 +14,18 @@ interface GameDao {
     @Query("SELECT * FROM game")
     fun getGames(): List<Game>
 
-//    @Query("SELECT * FROM game WHERE scoreA > scoreB")
-//    fun getAWins(): List<Game>
-//
-//    @Query("SELECT * FROM game WHERE scoreB > scoreA")
-//    fun getBWins(): List<Game>
+    @Query("SELECT * FROM game WHERE scoreA > scoreB")
+    fun getAWins(): LiveData<List<Game>>
+
+    @Query("SELECT * FROM game WHERE scoreB > scoreA")
+    fun getBWins(): LiveData<List<Game>>
+
+    @Query("SELECT * FROM game WHERE id=(:id)")
+    fun getGame(id: UUID): LiveData<Game?>
+
+    @Update
+    fun updateGame(game: Game)
+
+    @Insert
+    fun addGame(game: Game)
 }

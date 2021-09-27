@@ -42,7 +42,7 @@ class GameFragment: Fragment() {
     private lateinit var display: Button
     private lateinit var winnerBtn: Button
     private lateinit var winnerTxt: TextView
-    private lateinit var gameDetailViewModel: GameDetailViewModel by lazy{
+    private val gameDetailViewModel: GameDetailViewModel by lazy{
         ViewModelProviders.of(this).get(GameDetailViewModel::class.java)
     }
 
@@ -138,6 +138,19 @@ class GameFragment: Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        gameDetailViewModel.gameLiveData.observe(
+            viewLifecycleOwner,
+            androidx.lifecycle.Observer { game ->
+                game?.let {
+                    this.game = game
+                    updateUI()
+                }
+            }
+        )
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -182,6 +195,11 @@ class GameFragment: Fragment() {
             }
         }
         teamBname.addTextChangedListener(teamBWatcher)
+    }
+
+    private fun updateUI(){
+        teamAscore.setText(game.scoreA)
+        teamBscore.setText(game.scoreB)
     }
 
     companion object{

@@ -1,9 +1,11 @@
 package com.example.basketballcounter
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.example.basketballcounter.database.GameDatabase
 import java.lang.IllegalStateException
+import java.util.*
 
 private const val DATABASE_NAME = "game-database"
 
@@ -19,9 +21,11 @@ class GameRepository private constructor(context: Context){
 
     fun getGames(): List<Game> = gameDao.getGames()
 
-//    fun getAWins(): List<Game> = gameDao.getAWins()
-//
-//    fun getBWins(): List<Game> = gameDao.getBWins()
+    fun getAWins(): LiveData<List<Game>> = gameDao.getAWins()
+
+    fun getBWins(): LiveData<List<Game>> = gameDao.getBWins()
+
+    fun getGame(id: UUID): LiveData<Game?> = gameDao.getGame(id)
 
     companion object {
         private var INSTANCE: GameRepository? = null

@@ -29,8 +29,6 @@ class SaveActivity : AppCompatActivity() {
             setIsClickedResult(true)
             coolText.visibility = View.VISIBLE
             coolButton.isClickable = false
-            //TODO: figure out how to change the color of the button after it gets clicked (the comment below might be helpful but like maybe not idk)
-//            coolButton.backgroundTintList = ColorStateList.valueOf()
         }
     }
 

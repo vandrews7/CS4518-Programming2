@@ -8,11 +8,12 @@ import android.util.Log
 import android.widget.Toast
 
 import androidx.lifecycle.ViewModelProviders
+import java.util.*
 
 private const val TAG = "MainActivity"
 private const val REQUEST_CODE = 0
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), GameListFragment.Callbacks  {
 
     private val scoreViewModel: ScoreViewModel by lazy {
         ViewModelProviders.of(this).get(ScoreViewModel::class.java)
@@ -32,6 +33,16 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.fragment_container, fragment)
                 .commit()
         }
+    }
+
+    override fun onGameSelected(id: UUID) {
+        //   Log.d(TAG, "MainActivity.onGameSelected: $id")
+        val fragment = GameFragment.newInstance(id)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroy() {

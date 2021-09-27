@@ -1,5 +1,6 @@
 package com.example.basketballcounter
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,16 +13,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 private const val TAG = "GameListFragment"
 
 class GameListFragment : Fragment() {
+
+    interface Callbacks{
+        fun onGameSelected(id: UUID)
+    }
+
+    private var callbacks: Callbacks? = null
 
     private lateinit var gameRecyclerView: RecyclerView
     private var adapter: GameAdapter? = null
 
     private val gameListViewModel: GameListViewModel by lazy {
         ViewModelProviders.of(this).get(GameListViewModel::class.java)
+
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callbacks = context as Callbacks?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +58,18 @@ class GameListFragment : Fragment() {
         return view
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        callbacks = null
+    }
+
     private fun updateUI() {
         val games = gameListViewModel.games
         adapter = GameAdapter(games)
         gameRecyclerView.adapter = adapter
     }
 
-    private inner class GameHolder(view: View) : RecyclerView.ViewHolder(view){
+    private inner class GameHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private lateinit var game: Game
 
         private val gameNum: TextView = itemView.findViewById(R.id.gameNum)
@@ -59,6 +78,10 @@ class GameListFragment : Fragment() {
         private val gameDate: TextView = itemView.findViewById(R.id.gameDate)
         private val teamAicon: ImageView =  itemView.findViewById(R.id.iconA)
         private val teamBicon: ImageView = itemView.findViewById(R.id.iconB)
+
+        init{
+            itemView.setOnClickListener(this)
+        }
 
         fun bind(game: Game) {
             this.game = game
@@ -77,6 +100,10 @@ class GameListFragment : Fragment() {
             } else {
                 View.GONE
             }
+        }
+
+        override fun onClick(v: View?) {
+            callbacks?.onGameSelected(game.id)
         }
     }
 
